@@ -1,6 +1,8 @@
 def mergesort(a):
-    '''This is the python code for sorting array using mergesort algorithm. Test seed: a= [ 113,345, 98239,198,92,5,534,6,456,12,3,32,345,34,6,54,7,56]'''
-    #print('splitting',a)
+    '''
+    This is the python code for sorting array using mergesort algorithm.
+    Test seed: a= [ 113,345, 98239,198,92,5,534,6,456,12,3,32,345,34,6,54,7,56]
+    '''
     if len(a)>1:
         mid = len(a)/2
         lefthalf = a[:mid]
@@ -27,5 +29,9 @@ def mergesort(a):
             a[k]=righthalf[j]
             j=j+1
             k=k+1
-    #print('merge',a)
             
+if __name__ == '__main__':
+    a = [113,345,98239,198,92,5,534,6,456,12,3,32,345,34,6,54,7,56] # test seed
+    print(a)
+    mergesort(a)
+    print(a)

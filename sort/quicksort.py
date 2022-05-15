@@ -32,4 +32,8 @@ def partition(a,first,last):
 
     return rightmark
 
-    
+if __name__ == '__main__':
+    a = [113,345,98239,198,92,5,534,6,456,12,3,32,345,34,6,54,7,56] # test seed
+    print(a)
+    quicksort(a)
+    print(a)
