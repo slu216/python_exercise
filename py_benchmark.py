@@ -1,3 +1,7 @@
+####
+# https://developer.apple.com/forums/thread/695963
+# https://github.com/conda-forge/numpy-feedstock/issues/253
+####
 import time
 import numpy as np
 np.random.seed(42)
