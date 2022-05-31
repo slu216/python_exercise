@@ -16,4 +16,4 @@ for _ in range(runtimes):
         np.linalg.svd(a)
     timecosts.append(time.time() - s_time)
 
-print(f'mean of {runtimes} runs: {np.mean(timecosts):.5f}s')
+print(f'numpy mean of {runtimes} runs: {np.mean(timecosts):.5f}s')
