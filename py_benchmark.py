@@ -1,6 +1,7 @@
 ####
 # https://developer.apple.com/forums/thread/695963
 # https://github.com/conda-forge/numpy-feedstock/issues/253
+# conda install numpy "libblas=*=*accelerate"
 ####
 import time
 import numpy as np
