@@ -1,7 +1,6 @@
 import multiprocessing
 import subprocess
 import os
-from quickping_helper import pinger
 
 def ping(host:str,opt:str='-c',cnt:str='1',opt2:str='-t',timeout:str='1'):
     cmd = ['ping',opt,cnt,opt2,timeout,host]
@@ -19,6 +18,19 @@ def loopPing(ip_addr='10.81.0', first=0, last=255):
             print(new_addr)
     return ip_vals
 
+def pinger(job_q, results_q):
+    DEVNULL = open(os.devnull,'w')
+    while True:
+        ip = job_q.get()
+        if ip is None: break
+        try:
+            ret = subprocess.call(['ping','-c1','-t1',ip],
+                                  stdout=DEVNULL)
+            if ret == 0:
+                results_q.put(ip)
+            # print(ip)
+        except:
+            pass
 
 if __name__ == "__main__":
     # ret = ping(host='google.com') 
