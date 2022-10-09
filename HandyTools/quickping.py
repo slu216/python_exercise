@@ -19,13 +19,13 @@ def loopPing(ip_addr='10.81.0', first=0, last=255):
     return ip_vals
 
 def pinger(job_q, results_q):
-    DEVNULL = open(os.devnull,'w')
+    devnull = open(os.devnull, 'w')
     while True:
         ip = job_q.get()
         if ip is None: break
         try:
             ret = subprocess.call(['ping','-c1','-t1',ip],
-                                  stdout=DEVNULL)
+                                  stdout=devnull)
             if ret == 0:
                 results_q.put(ip)
             # print(ip)
