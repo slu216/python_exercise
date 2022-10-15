@@ -2,13 +2,15 @@ import multiprocessing
 import subprocess
 import os
 
-def ping(host:str,opt:str='-c',cnt:str='1',opt2:str='-t',timeout:str='1'):
-    cmd = ['ping',opt,cnt,opt2,timeout,host]
+
+def ping(host:str, opt:str='-c', cnt:str='1', opt2:str='-t', timeout:str='1'):
+    cmd = ['ping', opt, cnt, opt2, timeout, host]
     ret = subprocess.call(cmd,stdout=open(os.devnull, 'w'))
     # ret = subprocess.run(cmd)
     return ret
 
-def loopPing(ip_addr='10.81.0', first=0, last=255):
+
+def loopping(ip_addr='10.81.0', first=0, last=255):
     ip_vals = []
     for val in range(first,last+1):
         new_addr = ip_addr+'.'+str(val)
@@ -17,6 +19,7 @@ def loopPing(ip_addr='10.81.0', first=0, last=255):
             ip_vals.append(new_addr)
             print(new_addr)
     return ip_vals
+
 
 def pinger(job_q, results_q):
     devnull = open(os.devnull, 'w')
@@ -31,6 +34,7 @@ def pinger(job_q, results_q):
             # print(ip)
         except:
             pass
+
 
 if __name__ == "__main__":
     # ret = ping(host='google.com') 
