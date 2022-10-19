@@ -38,7 +38,7 @@ def pinger(job_q, results_q):
 
 if __name__ == "__main__":
     # ret = ping(host='google.com') 
-    # loopPing()
+    # loopping()
     pool_size = 64
 
     jobs = multiprocessing.Queue()
