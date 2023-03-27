@@ -49,8 +49,9 @@ if __name__ == "__main__":
     for p in pool:
         p.start()
 
-    for i in range(1,255):
-        jobs.put('10.81.0.{0}'.format(i))
+    for i in range(0,255):
+        for j in range(0,255):
+            jobs.put('169.254.{0}.{1}'.format(i,j))
 
     for p in pool:
         jobs.put(None)  
