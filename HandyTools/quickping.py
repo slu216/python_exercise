@@ -39,19 +39,20 @@ def pinger(job_q, results_q):
 if __name__ == "__main__":
     # ret = ping(host='google.com') 
     # loopping()
+    import time
     pool_size = 64
 
     jobs = multiprocessing.Queue()
     results = multiprocessing.Queue()
 
     pool = [multiprocessing.Process(target=pinger, args=(jobs,results)) for i in range(pool_size)]
-
+    now = time.perf_counter()
     for p in pool:
         p.start()
 
     for i in range(0,255):
         for j in range(0,255):
-            jobs.put('169.254.{0}.{1}'.format(i,j))
+            jobs.put('10.81.{0}.{1}'.format(i,j))
 
     for p in pool:
         jobs.put(None)  
@@ -62,3 +63,5 @@ if __name__ == "__main__":
     while not results.empty():
         ip = results.get()
         print(ip)
+    then = time.perf_counter()
+    print(f"Time elapsed: {then-now:.02f}")
