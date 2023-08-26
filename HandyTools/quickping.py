@@ -25,7 +25,8 @@ def pinger(job_q, results_q):
     devnull = open(os.devnull, 'w')
     while True:
         ip = job_q.get()
-        if ip is None: break
+        if ip is None:
+            break
         try:
             ret = subprocess.call(['ping','-c1','-t1',ip],
                                   stdout=devnull)
@@ -45,7 +46,8 @@ if __name__ == "__main__":
     jobs = multiprocessing.Queue()
     results = multiprocessing.Queue()
 
-    pool = [multiprocessing.Process(target=pinger, args=(jobs,results)) for i in range(pool_size)]
+    pool = [multiprocessing.Process(target=pinger, args=(jobs,results)) \
+             for i in range(pool_size)]
     now = time.perf_counter()
     for p in pool:
         p.start()
